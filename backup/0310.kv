@@ -1,0 +1,132 @@
+#screens in root "widget" WindowManager
+WindowManager:
+    StartScreen:
+    MainScreen:
+        id: mScreen
+
+#where the grapics is created
+
+<StartScreen>:
+    Image:
+        size: root.size
+        source: "pics/OpeningScreen.png"
+
+    Label:
+        pos: 0, -100
+        text: "press to start"
+
+    Button:
+        size: root.size
+        opacity: 0
+        on_press:
+            app.runApp()
+            app.root.current = "mainScreen"
+
+<MainScreen>:
+    name: "mainScreen"
+    FloatLayout
+        Home:
+            Image:
+                size: root.size
+                source: "pics/Home.png"
+
+            CircularProgressBar:
+                id: LFoutGui
+                widget_size: 100
+                thickness: 5
+                pos: 155, 450
+
+            CircularProgressBar:
+                id: LBoutGui
+                widget_size: 100
+                thickness: 5
+                pos: 155, 203
+
+            CircularProgressBar:
+                id: RFoutGui
+                widget_size: 100
+                thickness: 5
+                pos: 401, 450
+
+            CircularProgressBar:
+                id: RBoutGui
+                widget_size: 100
+                thickness: 5
+                pos: 401, 203
+
+
+            ControlPanel:
+                size: root.width, 180
+
+                GridLayout:
+                    cols: 10
+                    GridLayout:
+                        cols: 1
+                        Button:
+                            text: "Use \nsliders"
+                            on_press:
+                                app.setControllUnit('sliders')
+
+                        Button:
+                            text: "Use \njoystick"
+                            on_press:
+                                app.setControllUnit('joystick')
+
+                    Button:
+                        text: "LF OFF"
+                        on_press:
+                            app.turnOffThruster("LF")
+                            app.runApp()
+
+                    Slider:
+                        id: manLF
+                        min: 0
+                        max: 100
+                        step: 1
+                        orientation: 'vertical'
+
+                    Button:
+                        text: "RF OFF"
+                        on_press:
+                            app.turnOffThruster("RF")
+
+                    Slider
+                        id: manRF
+                        min: 0
+                        max: 100
+                        step: 1
+                        orientation: 'vertical'
+
+                    Button:
+                        text: "LB OFF"
+                        on_press:
+                            app.turnOffThruster("LB")
+
+                    Slider:
+                        id: manLB
+                        min: 0
+                        max: 100
+                        step: 1
+                        orientation: 'vertical'
+
+                    Button:
+                        text: "RB OFF"
+                        on_press:
+                            app.turnOffThruster("RB")
+
+                    Slider:
+                        id: manRB
+                        min: 0
+                        max: 100
+                        step: 1
+                        orientation: 'vertical'
+                    #joistick
+                    Joystick:
+                        id: joystick
+                        #pos: 0, 530
+                        outer_background_color: (0.75, 0.75, 0.75, 0.3)
+                        outer_line_color:       (0.25, 0.25, 0.25, 0.3)
+                        inner_background_color: (0.75, 0.75, 0.75, 0.1)
+                        inner_line_color:       (0.7,  0.7,  0.7,  0.1)
+                        pad_background_color:   (1,  1,  1,  0.8)
+                        pad_line_color:         (1,  1,  1,  1)

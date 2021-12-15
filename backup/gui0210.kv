@@ -1,0 +1,95 @@
+#screens
+WindowManager:
+    StartScreen:
+    MainScreen:
+
+#where the grapics is created
+<myApp>
+    FloatLayout
+        Home:
+            Image:
+                size: root.size
+                source: "Home.png"
+
+            CircularProgressBar:
+                id: LFoutGui
+                widget_size: 100
+                thickness: 5
+                pos: 155, 450
+
+            CircularProgressBar:
+                id: LBoutGui
+                widget_size: 100
+                thickness: 5
+                pos: 155, 203
+
+            CircularProgressBar:
+                id: RFoutGui
+                widget_size: 100
+                thickness: 5
+                pos: 401, 450
+
+            CircularProgressBar:
+                id: RBoutGui
+                widget_size: 100
+                thickness: 5
+                pos: 401, 203
+
+
+            ControlPanel:
+                pos: 0, 0
+                size_hint: None, None
+                size: root.width, 180
+
+                GridLayout:
+                    cols:8
+
+                    Button:
+                        text: "LF OFF"
+                        on_press:
+                            app.turnOffThruster("LF")
+                            app.runApp()
+
+                    Slider:
+                        id: manLF
+                        min: 0
+                        max: 100
+                        step: 1
+                        orientation: 'vertical'
+
+                    Button:
+                        text: "RF OFF"
+                        on_press:
+                            app.turnOffThruster("RF")
+
+
+
+                    manualPowerInput
+                        id: manRF
+                        min: 0
+                        max: 100
+                        step: 1
+                        orientation: 'vertical'
+
+                    Button:
+                        text: "LB OFF"
+                        on_press:
+                            app.turnOffThruster("LB")
+                    manualPowerInput
+                        id: manLB
+                        min: 0
+                        max: 100
+                        step: 1
+                        orientation: 'vertical'
+
+                    Button:
+                        text: "RB OFF"
+                        on_press:
+                            app.turnOffThruster("RB")
+
+                    manualPowerInput
+                        id: manRB
+                        min: 0
+                        max: 100
+                        step: 1
+                        orientation: 'vertical'

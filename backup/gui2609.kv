@@ -1,0 +1,97 @@
+<myApp>
+    FloatLayout
+        Home:
+            canvas.before:
+                Rectangle:
+                    size: root.size
+                    source: "Home.png"
+
+            CircularProgressBar:
+                id: LFoutGui
+                widget_size: 100
+                thickness: 5
+                pos: 166, 472
+
+            CircularProgressBar:
+                id: LBoutGui
+                widget_size: 100
+                thickness: 5
+                pos: 166, 215
+
+            CircularProgressBar:
+                id: RFoutGui
+                widget_size: 100
+                thickness: 5
+                pos: 422, 472
+
+            CircularProgressBar:
+                id: RBoutGui
+                widget_size: 100
+                thickness: 5
+                pos: 422, 215
+
+
+            ControlPanel:
+                pos: 0, 0
+                size_hint: None, None
+                size: root.width, 180
+
+                GridLayout:
+                    cols:8
+
+                    Button:
+                        text: "LF OFF"
+                        on_press:
+                            app.turnOffThruster("LF")
+
+                    Slider:
+                        id: manLF
+                        min: 0
+                        max: 100
+                        step: 1
+                        orientation: 'vertical'
+
+                    Button:
+                        text: "RF OFF"
+                        on_press:
+                            app.turnOffThruster("RF")
+
+
+
+                    manualPowerInput
+                        id: manRF
+                        min: 0
+                        max: 100
+                        step: 1
+                        orientation: 'vertical'
+
+                    Button:
+                        text: "LB OFF"
+                        on_press:
+                            app.turnOffThruster("LB")
+                    manualPowerInput
+                        id: manLB
+                        min: 0
+                        max: 100
+                        step: 1
+                        orientation: 'vertical'
+
+                    Button:
+                        text: "RB OFF"
+                        on_press:
+                            app.turnOffThruster("RB")
+
+                    manualPowerInput
+                        id: manRB
+                        min: 0
+                        max: 100
+                        step: 1
+                        orientation: 'vertical'
+
+    Button:
+        id: info
+        size: root.size
+        text: "Press the screen to start"
+        on_press:
+            app.runApp()
+            self.x = 0 - root.width #fyfy
